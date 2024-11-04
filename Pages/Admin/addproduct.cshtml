@@ -1,0 +1,88 @@
+﻿@page
+@model _1.Pages.Admin.addproductModel
+@{
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Product</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title></title>
+</head>
+<body dir="rtl" class="bg-light">
+
+    <div class="container">
+        <h1 class="text-center my-4">اضافه کردن محصولات</h1>
+
+        <form method="post" enctype="multipart/form-data" class="bg-white p-4 rounded shadow-sm">
+            <!-- Hidden input for ID -->
+
+            <!-- product Name -->
+            <div class="mb-3">
+                <label asp-for="product.Name" class="form-label">نام محصول </label>
+                <input asp-for="product.Name" class="form-control" />
+                <span asp-validation-for="product.Name" class="text-danger"></span>
+            </div>
+
+            <!-- product Description -->
+            <div class="mb-3">
+                <label asp-for="product.Description" class="form-label">توضیحات</label>
+                <textarea asp-for="product.Description" rows="4" class="form-control"></textarea>
+                <span asp-validation-for="product.Description" class="text-danger"></span>
+            </div>
+
+            <!-- product Image -->
+            <div class="mb-3">
+                <label asp-for="product.img" class="form-label">عکس محصول</label>
+                <input asp-for="product.img" type="file" class="form-control" />
+                <span asp-validation-for="product.img" class="text-danger"></span>
+            </div>
+
+            <!-- product Price -->
+            <div class="mb-3">
+                <label asp-for="product.price" class="form-label">قیمت</label>
+                <input asp-for="product.price" type="number" class="form-control" />
+                <span asp-validation-for="product.price" class="text-danger"></span>
+            </div>
+
+            <!-- product Quantity -->
+            <div class="mb-3">
+                <label asp-for="product.quantity" class="form-label">تعداد موجودی</label>
+                <input asp-for="product.quantity" type="number" class="form-control" />
+                <span asp-validation-for="product.quantity" class="text-danger"></span>
+            </div>
+            <!-- دسته‌بندی محصول -->
+            <div class="mb-3">
+                <label class="form-label">دسته‌بندی</label>
+                <select asp-for="product.categuryid" class="form-control">
+                    <option value="">انتخاب کنید</option>
+                    @foreach (var category in Model.Categuries)
+                    {
+                        <option value="@category.id">@category.name</option>
+                    }
+                </select>
+                <span asp-validation-for="product.categuryid" class="text-danger"></span>
+            </div>
+
+
+            <!-- Submit Button -->
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary">اضافه کردن محصول</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js (Optional) -->
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

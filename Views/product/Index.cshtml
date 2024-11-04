@@ -1,0 +1,15 @@
+﻿@model IEnumerable<productt>
+@{
+    ViewData["Title"] = ViewData["GroupName"];
+}
+
+<div>
+    <h1>@ViewData["GroupName"]</h1>
+<div class="row">
+@foreach (var item in Model)
+        {
+            <partial name="View1" model="@item"/>
+                     }
+</div>
+</div>
+

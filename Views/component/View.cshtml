@@ -1,0 +1,30 @@
+﻿@model IEnumerable<categury>
+@{
+    ViewData["Title"] = "View";
+}
+
+<ul class="list-group">
+
+    <form asp-action="Index" method="post">
+
+
+        @foreach (var item in Model)
+        {
+        <li>
+
+            <a href="Group/@item.id/@item.name">@item.name</a>
+
+
+        </li>
+
+
+
+
+
+        }
+
+
+    </form>
+
+</ul>
+

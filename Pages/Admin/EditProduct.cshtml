@@ -1,0 +1,25 @@
+﻿@page "{id:int}"
+@model _1.Pages.Admin.EditProductModel
+
+<h2>ویرایش محصول</h2>
+<link href="~/css/admin.css" rel="stylesheet" />
+<form method="post" enctype="multipart/form-data" dir="rtl">
+    <div>
+        <label>نام محصول:</label>
+        <input asp-for="Product.Name" class="form-control" />
+    </div>
+    <div>
+        <label>قیمت:</label>
+        <input asp-for="Product.item.price" class="form-control" />
+    </div>
+    <div>
+        <label>توضیحات:</label>
+        <textarea asp-for="Product.Description" class="form-control"></textarea>
+    </div>
+    <div>
+        <label>عکس محصول:</label>
+        <input type="file" asp-for="Image" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-success">ذخیره</button>
+    <a asp-page="/Admin" class="btn btn-secondary">بازگشت</a>
+</form>

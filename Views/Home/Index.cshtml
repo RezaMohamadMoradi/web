@@ -1,0 +1,21 @@
+﻿@model catpor
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">به فروشگاه ما خوش آمدید</h1>
+
+    <div class="row">
+        @foreach (var item in Model.productts)
+        {
+            <partial  name="View1" model="@item" />
+        }
+    </div>
+
+    @section CategoryList {
+        @Html.Partial("listdropcat", Model.Categuries) <!-- استفاده از PartialView برای نمایش دسته‌بندی‌ها -->
+    }
+
+</div>
+

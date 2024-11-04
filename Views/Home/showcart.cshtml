@@ -1,0 +1,30 @@
+﻿@model cartviewmodel
+@{
+    ViewData["Title"] = "showcart";
+}
+<table class="table table-dark">
+    <thead class="thead-dark">
+        <tr>
+            <th>kala</th>
+            <th>tedad</th>
+            <th>price</th>
+            <th>حذف</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Cartitems)
+        {
+            <tr>
+                <td>@item.item.product.Name</td> <!-- اشاره مستقیم به product -->
+                <td>@item.quantity</td>
+                <td>@item.item.price</td>
+                <td><a asp-action="deletecart" asp-controller="Home" asp-route-id="@item.item.id">حذف</a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+<h5>جمع کل: @Model.ordertotal</h5>
+    <p>
+    <a class="btn btn-success" asp-action="InitiatePayment">پرداخت</a>
+    </p>

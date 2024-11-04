@@ -1,0 +1,64 @@
+﻿@page
+@using X.PagedList.Mvc.Core
+@model _1.Pages.Admin.IndexModel
+@{
+}
+<link href="~/css/admin.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>لیست محصولات</title>
+</head>
+<body dir="rtl">
+ 
+    <table>
+        
+        <thead>
+            <tr>
+                <th>عکس</th>
+                <th>نام محصول</th>
+                <th>قیمت</th>
+                <th>توضیحات</th>
+                <th>دستورات</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Products)
+            {
+                <tr>
+                    <td><img src="@item.img" alt="@item.Name" style="max-width:200px ;border:1px solid ;padding:3px" /></td>
+                    <td>@item.Name</td>
+                    <td>@item.item.price</td>
+                    <td>@item.Description</td>
+                    <td>
+                        <form method="post" asp-page-handler="Delete" asp-route-id="@item.id">
+                            <button type="submit" class="btn btn-danger">حذف</button>
+                        </form>
+                        <br />
+                        <a asp-page="EditProduct" asp-route-id="@item.id" class="btn btn-warning">ویرایش</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p>
+        <a class="button" asp-page="addproduct">افزودن محصول</a>
+    </p>
+    <!-- لینک‌های صفحه‌بندی -->
+    <div class="text-center">
+        @Html.PagedListPager(Model.Products, page => Url.Page("Index", new { page }), new PagedListRenderOptions
+   {
+       DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+       DisplayLinkToLastPage = PagedListDisplayMode.Always,
+       DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+       DisplayLinkToNextPage = PagedListDisplayMode.Always,
+       Display = PagedListDisplayMode.IfNeeded,
+       MaximumPageNumbersToDisplay = 5,
+       DisplayEllipsesWhenNotShowingAllPageNumbers = true,
+       EllipsesFormat = "..."
+   })
+    </div>
+</body>
+</html>
