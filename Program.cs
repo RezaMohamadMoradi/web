@@ -69,32 +69,6 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
-//app.Use(async (context, next) =>
-//{
-//    if (context.Request.Path.StartsWithSegments("/Users"))
-//    {
-//        if (!context.User.Identity.IsAuthenticated)
-//        {
-//            context.Response.Redirect("/user/viewlogin");
-//            return; // اطمینان از اینکه بقیه کد اجرا نشود
-//        }
-
-//        var adminClaimValue = context.User.FindFirstValue("admin");
-
-//        // بررسی اینکه آیا مقدار adminClaimValue null است یا خیر
-//        if (string.IsNullOrEmpty(adminClaimValue) || !bool.Parse(adminClaimValue))
-//        {
-//            context.Response.Redirect("user/viewlogin");
-//            return; // اطمینان از اینکه بقیه کد اجرا نشود
-//        }
-//    }
-
-//    await next.Invoke();
-//});
-
-
-
-
 
 
 // مسیریابی پیش‌فرض
